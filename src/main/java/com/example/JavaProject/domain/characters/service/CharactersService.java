@@ -15,3 +15,10 @@ public class CharactersService {
 
 
 }
+
+//ObjectMapper mapper = new ObjectMapper();
+//
+//CharacterData character = mapper.readValue(
+//        resource.getInputStream(),
+//        CharacterData.class
+//);
