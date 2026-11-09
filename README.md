@@ -9,7 +9,7 @@
 | `src/main/java/.../domain/*` | 도메인별 controller / dto / entity / repository / service |
 | `src/main/java/.../global` | 공통 설정(CORS), 예외 처리, 공통 응답(`ResultDto`), 공용 Enum |
 | `src/main/java/.../data` | game-data JSON 로더·검증기 |
-| `src/main/resources/gamedata` | 기본 콘텐츠 JSON |
+| `src/main/resources/game-data` | 기본 콘텐츠 JSON (형식: `docs/game-data-format.md`) |
 | `frontend/` | React + TypeScript + Vite + Tailwind CSS |
 | `compose.yaml` | 개발용 PostgreSQL |
 

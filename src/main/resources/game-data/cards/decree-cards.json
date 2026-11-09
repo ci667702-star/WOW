@@ -1,0 +1,223 @@
+[
+  {
+    "id": "DECREE_PURGE_SILVER",
+    "name": "척결(剔抉)",
+    "description": "눈엣가시를 도려낸다. 도려낸 자리에는 원한이 고인다.",
+    "type": "DECREE",
+    "decreeType": "PURGE",
+    "grade": "SILVER",
+    "targetType": "CHARACTER",
+    "conditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 30 }
+    ],
+    "unlockConditions": [],
+    "choices": [
+      {
+        "id": "STRIP_POSITION",
+        "text": "직위를 박탈한다",
+        "check": { "stat": "POLITICS", "difficulty": 50 },
+        "success": {
+          "effects": [
+            { "target": "DECREE_TARGET", "key": "POSITION", "operation": "SET", "value": "STAFF" },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -40 },
+            { "target": "DECREE_TARGET_FACTION", "key": "ATTITUDE", "operation": "ADD", "value": -15 },
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": 5 },
+            { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operation": "ADD", "value": 5 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_OPPOSITION_GATHERING", "delayTurns": 1, "chance": 60 }
+          ]
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": -10 },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -30 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "EXPEL",
+        "text": "조직에서 퇴출한다",
+        "check": { "stat": "POLITICS", "difficulty": 65 },
+        "success": {
+          "effects": [
+            { "target": "DECREE_TARGET", "key": "STATUS", "operation": "SET", "value": "DISMISSED" },
+            { "target": "DECREE_TARGET_FACTION", "key": "ATTITUDE", "operation": "ADD", "value": -30 },
+            { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operation": "ADD", "value": 15 },
+            { "target": "COMPANY", "key": "STAFF_SUPPORT", "operation": "ADD", "value": -5 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_OPPOSITION_GATHERING", "delayTurns": 1, "chance": 80 }
+          ]
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": -15 },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -50 },
+            { "target": "DECREE_TARGET", "key": "DISCONTENT", "operation": "ADD", "value": 30 }
+          ],
+          "nextEvents": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "DECREE_APPEASE_SILVER",
+    "name": "회유(懷柔)",
+    "description": "적을 내 편으로 만든다. 값은 언젠가 치러야 한다.",
+    "type": "DECREE",
+    "decreeType": "APPEASE",
+    "grade": "SILVER",
+    "targetType": "CHARACTER",
+    "conditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 30 }
+    ],
+    "unlockConditions": [],
+    "choices": [
+      {
+        "id": "PROMISE_POST",
+        "text": "요직을 약속한다",
+        "check": { "stat": "CHARISMA", "difficulty": 50 },
+        "success": {
+          "effects": [
+            { "target": "DECREE_TARGET", "key": "LOYALTY", "operation": "ADD", "value": 25 },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": 20 },
+            { "target": "DECREE_TARGET", "key": "AMBITION", "operation": "ADD", "value": 10 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -10 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "BRIBE",
+        "text": "금전으로 매수한다",
+        "cost": { "budget": 300 },
+        "success": {
+          "effects": [
+            { "target": "DECREE_TARGET", "key": "LOYALTY", "operation": "ADD", "value": 15 },
+            { "target": "DECREE_TARGET_FACTION", "key": "ATTITUDE", "operation": "ADD", "value": 5 }
+          ],
+          "nextEvents": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "DECREE_CONSCRIPT_BRONZE",
+    "name": "차출(差出)",
+    "description": "사람과 예산을 필요한 곳으로 끌어온다. 빼앗긴 쪽은 잊지 않는다.",
+    "type": "DECREE",
+    "decreeType": "CONSCRIPT",
+    "grade": "BRONZE",
+    "targetType": "CHARACTER",
+    "conditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 30 }
+    ],
+    "unlockConditions": [],
+    "choices": [
+      {
+        "id": "DRAFT_PERSONNEL",
+        "text": "대상과 그 부서 인력을 차출한다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": 5 },
+            { "target": "COMPANY", "key": "STAFF_FATIGUE", "operation": "ADD", "value": 10 },
+            { "target": "DECREE_TARGET", "key": "FATIGUE", "operation": "ADD", "value": 20 },
+            { "target": "DECREE_TARGET", "key": "DISCONTENT", "operation": "ADD", "value": 10 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "DIVERT_BUDGET",
+        "text": "대상 부서의 예산을 전용한다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "BUDGET", "operation": "ADD", "value": 300 },
+            { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operation": "ADD", "value": 10 },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -20 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_IMPERIAL_INVESTIGATION", "delayTurns": 3, "chance": 30 }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "DECREE_SEIZE_GOLD",
+    "name": "장악(掌握)",
+    "description": "부서와 사업의 결정권을 손에 넣는다. 원래 쥐고 있던 자는 빈손이 된다.",
+    "type": "DECREE",
+    "decreeType": "SEIZE",
+    "grade": "GOLD",
+    "targetType": "CHARACTER",
+    "conditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 40 },
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operator": "GTE", "value": 40 }
+    ],
+    "unlockConditions": [],
+    "choices": [
+      {
+        "id": "TAKE_DEPARTMENT",
+        "text": "대상이 맡은 부서의 운영권을 가져온다",
+        "check": { "stat": "LEADERSHIP", "difficulty": 65 },
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": 15 },
+            { "target": "DECREE_TARGET", "key": "INFLUENCE", "operation": "ADD", "value": -20 },
+            { "target": "DECREE_TARGET", "key": "PLAYER_RELATION", "operation": "ADD", "value": -25 },
+            { "target": "DECREE_TARGET_FACTION", "key": "ATTITUDE", "operation": "ADD", "value": -10 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": -10 },
+            { "target": "DECREE_TARGET", "key": "DISCONTENT", "operation": "ADD", "value": 20 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_OPPOSITION_GATHERING", "delayTurns": 1, "chance": 50 }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "DECREE_PRESIDENT_ORDER",
+    "name": "수문장령(水門將令)",
+    "description": "황실과 조직이 모두 고개를 숙였을 때만 내릴 수 있는 명령. 공사의 모든 물길이 한 사람의 손에 들어온다.",
+    "type": "DECREE",
+    "decreeType": "SEIZE",
+    "grade": "PRESIDENT",
+    "targetType": "NONE",
+    "conditions": [],
+    "unlockConditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 80 },
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operator": "GTE", "value": 70 },
+      { "target": "FACTION", "targetId": "IMPERIAL", "key": "ATTITUDE", "operator": "GTE", "value": 50 },
+      { "target": "EVENT", "targetId": "EVT_IMPERIAL_INVESTIGATION", "key": "OCCURRED", "operator": "EQ", "value": 1 }
+    ],
+    "choices": [
+      {
+        "id": "SEIZE_ALL",
+        "text": "공사의 전권을 틀어쥔다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": 30 },
+            { "target": "COMPANY", "key": "STAFF_SUPPORT", "operation": "ADD", "value": -10 },
+            { "target": "FACTION", "targetId": "AMBITIOUS", "key": "ATTITUDE", "operation": "ADD", "value": -30 },
+            { "target": "FACTION", "targetId": "REFORM", "key": "ATTITUDE", "operation": "ADD", "value": -20 }
+          ],
+          "nextEvents": []
+        }
+      }
+    ]
+  }
+]

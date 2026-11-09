@@ -1,0 +1,72 @@
+[
+  {
+    "id": "MGR_001",
+    "name": "위소령(衛素玲)",
+    "title": "시설관리부장",
+    "position": "MANAGER",
+    "grade": "SILVER",
+    "department": "FACILITIES",
+    "factionId": "CONSERVATIVE",
+    "personality": "BUREAUCRAT",
+    "background": "댐과 수문의 점검 규정을 직접 만든 인물. 규정에 없는 일은 하지 않고, 규정에 있는 일은 반드시 한다.",
+    "ambition": "자신이 만든 규정이 공사 전체의 법도가 되는 것",
+    "expertise": "시설 점검과 안전 규정",
+    "stats": {
+      "VITALITY": 55,
+      "CHARISMA": 40,
+      "WISDOM": 70,
+      "STEALTH": 25,
+      "COMBAT": 35,
+      "SOCIAL": 35,
+      "SURVIVAL": 60,
+      "MAGIC": 30,
+      "POLITICS": 45,
+      "LEADERSHIP": 60,
+      "ADMINISTRATION": 85,
+      "INTELLIGENCE": 50
+    },
+    "initialState": {
+      "loyalty": 55,
+      "influence": 50,
+      "ambition": 40,
+      "discontent": 25,
+      "fatigue": 45,
+      "playerRelation": 5
+    }
+  },
+  {
+    "id": "MGR_002",
+    "name": "한도겸(韓道謙)",
+    "title": "운영부 대리",
+    "position": "ASSISTANT_MANAGER",
+    "grade": "BRONZE",
+    "department": "OPERATIONS",
+    "factionId": "PRAGMATIC",
+    "personality": "HIDDEN_DISSIDENT",
+    "background": "늘 웃는 얼굴로 상관의 지시를 받드는 성실한 대리. 다만 그의 형은 지난 숙청 때 공사에서 쫓겨났다.",
+    "ambition": "형을 내쫓은 자들에게 갚아 주는 것",
+    "expertise": "급수 운영과 현장 조율",
+    "stats": {
+      "VITALITY": 65,
+      "CHARISMA": 60,
+      "WISDOM": 55,
+      "STEALTH": 70,
+      "COMBAT": 40,
+      "SOCIAL": 75,
+      "SURVIVAL": 65,
+      "MAGIC": 20,
+      "POLITICS": 50,
+      "LEADERSHIP": 45,
+      "ADMINISTRATION": 55,
+      "INTELLIGENCE": 65
+    },
+    "initialState": {
+      "loyalty": 70,
+      "influence": 25,
+      "ambition": 55,
+      "discontent": 60,
+      "fatigue": 35,
+      "playerRelation": 30
+    }
+  }
+]
