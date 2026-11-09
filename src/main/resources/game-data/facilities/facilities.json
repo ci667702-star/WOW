@@ -1,0 +1,26 @@
+[
+  {
+    "id": "FAC_HEUKRYONG_DAM",
+    "name": "흑룡댐",
+    "type": "DAM",
+    "description": "대연국 북부 수계를 막아선 공사 최대의 댐. 수문 일곱 개가 모두 열린 것은 지난 백 년간 두 번뿐이다.",
+    "initialDurability": 70,
+    "initialStatus": "OPERATIONAL"
+  },
+  {
+    "id": "FAC_CHEONGSU_PLANT",
+    "name": "청수 정수장",
+    "type": "PURIFICATION_PLANT",
+    "description": "황도의 식수 절반을 걸러 내는 정수장. 설비가 낡아 야간 인력이 늘 부족하다.",
+    "initialDurability": 55,
+    "initialStatus": "OPERATIONAL"
+  },
+  {
+    "id": "FAC_BAEKRYONG_RESERVOIR",
+    "name": "백룡 저수지",
+    "type": "RESERVOIR",
+    "description": "가뭄에 대비해 물을 비축하는 저수지. 바닥에 무엇이 가라앉아 있는지는 아무도 말하지 않는다.",
+    "initialDurability": 85,
+    "initialStatus": "OPERATIONAL"
+  }
+]

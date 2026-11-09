@@ -1,0 +1,9 @@
+# 테스트 전용: 테스트마다 독립된 H2 인메모리 DB
+spring:
+  datasource:
+    url: jdbc:h2:mem:warden-test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop

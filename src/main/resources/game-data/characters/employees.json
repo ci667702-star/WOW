@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EMP_001",
+    "name": "모윤(毛允)",
+    "title": "청수 정수장 기사",
+    "position": "STAFF",
+    "grade": "STONE",
+    "department": "PURIFICATION",
+    "factionId": "PRAGMATIC",
+    "personality": "BENEVOLENT",
+    "background": "정수장 야간 근무를 십이 년째 서고 있는 기사. 동료들의 사정을 누구보다 잘 알고, 동료들도 그를 따른다.",
+    "ambition": "현장 직원들이 사람답게 일하는 것",
+    "expertise": "정수 설비 운전",
+    "stats": {
+      "VITALITY": 70,
+      "CHARISMA": 55,
+      "WISDOM": 45,
+      "STEALTH": 30,
+      "COMBAT": 45,
+      "SOCIAL": 70,
+      "SURVIVAL": 75,
+      "MAGIC": 15,
+      "POLITICS": 25,
+      "LEADERSHIP": 55,
+      "ADMINISTRATION": 35,
+      "INTELLIGENCE": 40
+    },
+    "initialState": {
+      "loyalty": 50,
+      "influence": 15,
+      "ambition": 20,
+      "discontent": 45,
+      "fatigue": 70,
+      "playerRelation": 0
+    }
+  },
+  {
+    "id": "EMP_002",
+    "name": "탁기(卓奇)",
+    "title": "감사실 서기",
+    "position": "STAFF",
+    "grade": "STONE",
+    "department": "AUDIT",
+    "factionId": null,
+    "personality": "OPPORTUNIST",
+    "background": "감사 문서를 정리하며 누가 무엇을 숨기는지 알게 된 서기. 그 지식을 팔 상대를 고르는 중이다.",
+    "ambition": "가장 높은 값을 부르는 쪽에 서는 것",
+    "expertise": "문서 정리와 장부 대조",
+    "stats": {
+      "VITALITY": 45,
+      "CHARISMA": 40,
+      "WISDOM": 60,
+      "STEALTH": 80,
+      "COMBAT": 15,
+      "SOCIAL": 50,
+      "SURVIVAL": 70,
+      "MAGIC": 25,
+      "POLITICS": 55,
+      "LEADERSHIP": 20,
+      "ADMINISTRATION": 60,
+      "INTELLIGENCE": 85
+    },
+    "initialState": {
+      "loyalty": 30,
+      "influence": 20,
+      "ambition": 75,
+      "discontent": 35,
+      "fatigue": 25,
+      "playerRelation": 0
+    }
+  }
+]

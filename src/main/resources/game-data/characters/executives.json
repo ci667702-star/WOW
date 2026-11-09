@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EXE_001",
+    "name": "용백진(龍伯辰)",
+    "title": "총재",
+    "position": "PRESIDENT",
+    "grade": "PRESIDENT",
+    "department": "PRESIDENT_OFFICE",
+    "factionId": "IMPERIAL",
+    "personality": "ROYALIST",
+    "background": "황실 외척 가문 출신으로 삼십 년간 공사를 이끌어 온 노(老)총재. 황명이라면 강물의 흐름도 바꾼다는 말을 듣는다.",
+    "ambition": "황실의 신임을 지킨 채 무사히 물러나는 것",
+    "expertise": "황실 의전과 대외 교섭",
+    "stats": {
+      "VITALITY": 35,
+      "CHARISMA": 70,
+      "WISDOM": 75,
+      "STEALTH": 40,
+      "COMBAT": 20,
+      "SOCIAL": 80,
+      "SURVIVAL": 60,
+      "MAGIC": 55,
+      "POLITICS": 90,
+      "LEADERSHIP": 65,
+      "ADMINISTRATION": 50,
+      "INTELLIGENCE": 70
+    },
+    "initialState": {
+      "loyalty": 60,
+      "influence": 95,
+      "ambition": 30,
+      "discontent": 10,
+      "fatigue": 40,
+      "playerRelation": 20
+    }
+  },
+  {
+    "id": "EXE_002",
+    "name": "사마현(司馬玄)",
+    "title": "기획조정본부장",
+    "position": "DIRECTOR",
+    "grade": "GOLD",
+    "department": "PLANNING",
+    "factionId": "AMBITIOUS",
+    "personality": "DANGEROUS_TALENT",
+    "background": "말단에서 십 년 만에 본부장에 오른 수재. 예산과 인사의 흐름을 손바닥처럼 꿰고 있으나, 그 길에 쓰러진 사람도 많다.",
+    "ambition": "총재 자리",
+    "expertise": "예산 편성과 인사",
+    "stats": {
+      "VITALITY": 60,
+      "CHARISMA": 65,
+      "WISDOM": 85,
+      "STEALTH": 75,
+      "COMBAT": 30,
+      "SOCIAL": 60,
+      "SURVIVAL": 70,
+      "MAGIC": 40,
+      "POLITICS": 85,
+      "LEADERSHIP": 70,
+      "ADMINISTRATION": 90,
+      "INTELLIGENCE": 80
+    },
+    "initialState": {
+      "loyalty": 35,
+      "influence": 75,
+      "ambition": 90,
+      "discontent": 30,
+      "fatigue": 20,
+      "playerRelation": -10
+    }
+  }
+]

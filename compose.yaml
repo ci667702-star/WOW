@@ -1,0 +1,25 @@
+# 개발용 PostgreSQL
+#   docker compose up -d     # 실행
+#   docker compose down      # 중지 (데이터는 볼륨에 유지)
+#   docker compose down -v   # 중지 + 데이터 삭제
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: warden-postgres
+    environment:
+      POSTGRES_DB: warden
+      POSTGRES_USER: warden
+      POSTGRES_PASSWORD: warden
+      TZ: Asia/Seoul
+    ports:
+      - "5432:5432"
+    volumes:
+      - warden-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U warden -d warden"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  warden-pgdata:

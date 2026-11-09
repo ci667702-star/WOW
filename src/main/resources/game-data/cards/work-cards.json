@@ -1,0 +1,168 @@
+[
+  {
+    "id": "WORK_DAM_FAILURE",
+    "name": "댐 시설 고장",
+    "description": "흑룡댐 제3수문의 개폐 장치가 멈췄다. 상류 수위는 오르고 있고, 시설관리부는 보수 예산부터 요구한다.",
+    "type": "WORK",
+    "grade": "SILVER",
+    "conditions": [
+      { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operator": "LTE", "value": 80 }
+    ],
+    "relatedCharacters": ["MGR_001"],
+    "relatedFactions": ["CONSERVATIVE"],
+    "relatedFacilities": ["FAC_HEUKRYONG_DAM"],
+    "choices": [
+      {
+        "id": "REPAIR_NOW",
+        "text": "즉시 전면 보수를 지시한다",
+        "cost": { "budget": 300 },
+        "check": { "stat": "ADMINISTRATION", "difficulty": 50 },
+        "success": {
+          "effects": [
+            { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operation": "ADD", "value": 30 },
+            { "target": "COMPANY", "key": "STAFF_FATIGUE", "operation": "ADD", "value": 5 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operation": "ADD", "value": -10 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_WATER_SUPPLY_DISRUPTION", "delayTurns": 1, "chance": 50 }
+          ]
+        }
+      },
+      {
+        "id": "PATCH_AND_WAIT",
+        "text": "임시 보수로 버티며 예산을 아낀다",
+        "cost": { "budget": 50 },
+        "success": {
+          "effects": [
+            { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operation": "ADD", "value": 5 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_WATER_SUPPLY_DISRUPTION", "delayTurns": 2, "chance": 70 }
+          ]
+        }
+      },
+      {
+        "id": "COVER_UP",
+        "text": "고장을 점검 보고서에서 누락시킨다",
+        "check": { "stat": "STEALTH", "difficulty": 60 },
+        "success": {
+          "effects": [
+            { "target": "CHARACTER", "targetId": "MGR_001", "key": "DISCONTENT", "operation": "ADD", "value": 15 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": -15 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_PRESS_REPORT", "delayTurns": 1, "chance": 100 }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "WORK_TYPHOON_DISCHARGE",
+    "name": "태풍 및 긴급 방류",
+    "description": "남해에서 올라온 태풍이 사흘 뒤 북부 수계를 덮친다. 미리 비우지 않으면 댐이 버티지 못한다. 비우면 하류 마을이 잠긴다.",
+    "type": "WORK",
+    "grade": "GOLD",
+    "conditions": [],
+    "relatedCharacters": ["EXE_002", "MGR_001"],
+    "relatedFactions": ["IMPERIAL"],
+    "relatedFacilities": ["FAC_HEUKRYONG_DAM"],
+    "choices": [
+      {
+        "id": "FULL_DISCHARGE",
+        "text": "수문을 모두 열어 긴급 방류한다",
+        "check": { "stat": "LEADERSHIP", "difficulty": 60 },
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": 10 },
+            { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": 5 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": -20 },
+            { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operation": "ADD", "value": -20 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_COMPLAINTS_SURGE", "delayTurns": 1, "chance": 100 }
+          ]
+        }
+      },
+      {
+        "id": "HOLD_WATER",
+        "text": "방류를 미루고 수위를 지켜본다",
+        "success": {
+          "effects": [
+            { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operation": "ADD", "value": -25 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_WATER_SUPPLY_DISRUPTION", "delayTurns": 1, "chance": 40 }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "WORK_STAFF_STRIKE",
+    "name": "직원 집단 업무 거부",
+    "description": "청수 정수장 야간조가 교대 근무를 거부하고 기계실 앞에 주저앉았다. 맨 앞에는 모윤이 서 있다.",
+    "type": "WORK",
+    "grade": "BRONZE",
+    "conditions": [
+      { "target": "COMPANY", "key": "STAFF_FATIGUE", "operator": "GTE", "value": 60 }
+    ],
+    "relatedCharacters": ["EMP_001"],
+    "relatedFactions": ["PRAGMATIC"],
+    "relatedFacilities": ["FAC_CHEONGSU_PLANT"],
+    "choices": [
+      {
+        "id": "NEGOTIATE",
+        "text": "직원 대표와 마주 앉아 협상한다",
+        "cost": { "budget": 150 },
+        "check": { "stat": "SOCIAL", "difficulty": 55 },
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "STAFF_SUPPORT", "operation": "ADD", "value": 15 },
+            { "target": "COMPANY", "key": "STAFF_FATIGUE", "operation": "ADD", "value": -15 },
+            { "target": "CHARACTER", "targetId": "EMP_001", "key": "PLAYER_RELATION", "operation": "ADD", "value": 20 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "STAFF_SUPPORT", "operation": "ADD", "value": -10 },
+            { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operation": "ADD", "value": 10 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "DISCIPLINE",
+        "text": "주동자를 징계하고 복귀를 명령한다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": 10 },
+            { "target": "COMPANY", "key": "STAFF_SUPPORT", "operation": "ADD", "value": -20 },
+            { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operation": "ADD", "value": 15 },
+            { "target": "CHARACTER", "targetId": "EMP_001", "key": "DISCONTENT", "operation": "ADD", "value": 30 },
+            { "target": "FACTION", "targetId": "PRAGMATIC", "key": "ATTITUDE", "operation": "ADD", "value": -20 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_OPPOSITION_GATHERING", "delayTurns": 2, "chance": 50 }
+          ]
+        }
+      }
+    ]
+  }
+]

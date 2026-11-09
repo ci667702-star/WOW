@@ -1,0 +1,10 @@
+# 로컬 개발용: 설치 없이 바로 실행되는 H2 인메모리 DB (재시작하면 데이터가 초기화된다)
+spring:
+  datasource:
+    url: jdbc:h2:mem:warden;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true

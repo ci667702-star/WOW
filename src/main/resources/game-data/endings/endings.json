@@ -1,0 +1,79 @@
+[
+  {
+    "id": "END_STAFF_REVOLT",
+    "name": "성난 물결",
+    "type": "DEFEAT",
+    "reason": "COUP",
+    "priority": 1,
+    "description": "직원들이 수문을 걸어 잠그고 책임자의 퇴진을 외쳤다. 물길을 쥔 손이 바뀌었다.",
+    "conditions": [
+      { "target": "REBELLION", "key": "SUCCEEDED", "operator": "EQ", "value": 1 }
+    ]
+  },
+  {
+    "id": "END_OUSTED",
+    "name": "축출",
+    "type": "DEFEAT",
+    "reason": "DISMISSED",
+    "priority": 2,
+    "description": "아침에 출근하니 집무실 문패가 바뀌어 있었다. 경쟁 세력이 마침내 자리를 빼앗았다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operator": "LTE", "value": 10 }
+    ]
+  },
+  {
+    "id": "END_COLLAPSE",
+    "name": "무너진 둑",
+    "type": "DEFEAT",
+    "reason": "COLLAPSE",
+    "priority": 3,
+    "description": "금고는 비고 수문은 멈췄다. 조직 붕괴의 책임을 지고 해임되었다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "BUDGET", "operator": "LTE", "value": 0 }
+    ]
+  },
+  {
+    "id": "END_IMPERIAL_FAVORITE",
+    "name": "황실의 총애",
+    "type": "VICTORY",
+    "reason": "GOAL_ACHIEVED",
+    "priority": 10,
+    "description": "황제가 친히 이름을 불렀다. 공사의 책임자를 넘어 대연국 최고의 권력자 반열에 올랐다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operator": "GTE", "value": 90 },
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operator": "GTE", "value": 70 }
+    ]
+  },
+  {
+    "id": "END_IRON_GRIP",
+    "name": "철권의 수문장",
+    "type": "VICTORY",
+    "reason": "GOAL_ACHIEVED",
+    "priority": 20,
+    "description": "누구도 감히 반대하지 못한다. 공사의 모든 물길이 한 사람의 뜻대로 흐른다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operator": "GTE", "value": 90 }
+    ]
+  },
+  {
+    "id": "END_REFORM_SUCCESS",
+    "name": "맑아진 물길",
+    "type": "VICTORY",
+    "reason": "DECK_EXHAUSTED",
+    "priority": 30,
+    "description": "썩은 수로를 걷어 내고 새 물길을 냈다. 공사는 처음으로 백성에게 믿음을 얻었다.",
+    "conditions": [
+      { "target": "FACTION", "targetId": "REFORM", "key": "INFLUENCE", "operator": "GTE", "value": 50 },
+      { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operator": "GTE", "value": 70 }
+    ]
+  },
+  {
+    "id": "END_SURVIVED",
+    "name": "살아남은 수문장",
+    "type": "VICTORY",
+    "reason": "DECK_EXHAUSTED",
+    "priority": 99,
+    "description": "큰 영광도 큰 몰락도 없었다. 거센 물살 속에서 끝까지 자리를 지켰다.",
+    "conditions": []
+  }
+]

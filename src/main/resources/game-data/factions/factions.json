@@ -1,0 +1,77 @@
+[
+  {
+    "id": "IMPERIAL",
+    "name": "황실파",
+    "description": "공사는 황실의 물을 맡아 지키는 곳일 뿐이라 여기는 자들.",
+    "ideology": "황실 권위와 명령 중시",
+    "goal": "황명을 공사 운영의 최우선으로 삼는다",
+    "initialInfluence": 30,
+    "initialAttitude": 10,
+    "relations": {
+      "REFORM": -20,
+      "CONSERVATIVE": 30,
+      "PRAGMATIC": 0,
+      "AMBITIOUS": -10
+    }
+  },
+  {
+    "id": "REFORM",
+    "name": "개혁파",
+    "description": "썩은 수로를 뜯어고쳐야 물이 맑아진다고 믿는 자들.",
+    "ideology": "조직 개혁과 부패 척결",
+    "goal": "부패한 간부를 몰아내고 감사 권한을 강화한다",
+    "initialInfluence": 15,
+    "initialAttitude": 0,
+    "relations": {
+      "IMPERIAL": -20,
+      "CONSERVATIVE": -40,
+      "PRAGMATIC": 20,
+      "AMBITIOUS": -30
+    }
+  },
+  {
+    "id": "CONSERVATIVE",
+    "name": "보수파",
+    "description": "물길은 흐르던 대로 흘러야 한다고 믿는 자들.",
+    "ideology": "기존 질서와 권한 유지",
+    "goal": "현재의 직제와 권한 배분을 지킨다",
+    "initialInfluence": 25,
+    "initialAttitude": 0,
+    "relations": {
+      "IMPERIAL": 30,
+      "REFORM": -40,
+      "PRAGMATIC": -10,
+      "AMBITIOUS": 10
+    }
+  },
+  {
+    "id": "PRAGMATIC",
+    "name": "실무파",
+    "description": "수문을 실제로 여닫는 현장의 사람들.",
+    "ideology": "업무 효율과 직원 처우 중시",
+    "goal": "현장 인력의 처우를 개선하고 업무 부담을 줄인다",
+    "initialInfluence": 20,
+    "initialAttitude": 10,
+    "relations": {
+      "IMPERIAL": 0,
+      "REFORM": 20,
+      "CONSERVATIVE": -10,
+      "AMBITIOUS": -20
+    }
+  },
+  {
+    "id": "AMBITIOUS",
+    "name": "야심파",
+    "description": "물이 흐르는 곳에 권력도 흐른다는 것을 아는 자들.",
+    "ideology": "권력 확대와 승진 추구",
+    "goal": "핵심 보직을 장악하고 책임자를 교체한다",
+    "initialInfluence": 10,
+    "initialAttitude": -10,
+    "relations": {
+      "IMPERIAL": -10,
+      "REFORM": -30,
+      "CONSERVATIVE": 10,
+      "PRAGMATIC": -20
+    }
+  }
+]

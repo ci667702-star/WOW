@@ -1,0 +1,127 @@
+[
+  {
+    "id": "EVT_WATER_SUPPLY_DISRUPTION",
+    "name": "용수 공급 차질",
+    "type": "CHAIN",
+    "description": "흑룡댐 하류의 급수량이 절반으로 줄었다. 논은 마르고 우물은 바닥을 드러낸다.",
+    "conditions": [
+      { "target": "FACILITY", "targetId": "FAC_HEUKRYONG_DAM", "key": "DURABILITY", "operator": "LTE", "value": 60 }
+    ],
+    "effects": [
+      { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": -10 },
+      { "target": "COMPANY", "key": "STAFF_FATIGUE", "operation": "ADD", "value": 10 }
+    ],
+    "choices": [],
+    "nextEvents": [
+      { "eventId": "EVT_COMPLAINTS_SURGE", "delayTurns": 1, "chance": 80 }
+    ]
+  },
+  {
+    "id": "EVT_COMPLAINTS_SURGE",
+    "name": "민원 폭증",
+    "type": "CHAIN",
+    "description": "공사 정문 앞에 물동이를 든 백성들이 줄을 섰다. 접수된 민원이 하루 만에 천 건을 넘었다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operator": "LTE", "value": 60 }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "PUBLIC_APOLOGY",
+        "text": "책임자 명의로 공개 사과문을 낸다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": 5 },
+            { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": -5 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "IGNORE",
+        "text": "민원을 묵살한다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": -10 }
+          ],
+          "nextEvents": [
+            { "eventId": "EVT_PRESS_REPORT", "delayTurns": 1, "chance": 70 }
+          ]
+        }
+      }
+    ],
+    "nextEvents": []
+  },
+  {
+    "id": "EVT_PRESS_REPORT",
+    "name": "언론 비리 의혹 보도",
+    "type": "CHAIN",
+    "description": "황도의 신문이 '현룡수무공사, 물보다 먼저 새는 것은 장부'라는 제목으로 1면을 채웠다.",
+    "conditions": [],
+    "effects": [
+      { "target": "COMPANY", "key": "PUBLIC_REPUTATION", "operation": "ADD", "value": -15 },
+      { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": -10 }
+    ],
+    "choices": [],
+    "nextEvents": [
+      { "eventId": "EVT_IMPERIAL_INVESTIGATION", "delayTurns": 2, "chance": 60 }
+    ]
+  },
+  {
+    "id": "EVT_IMPERIAL_INVESTIGATION",
+    "name": "황실 조사",
+    "type": "POLITICAL",
+    "description": "황실 감찰사가 공사에 들이닥쳤다. 누군가는 책임을 져야 한다.",
+    "conditions": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "COOPERATE",
+        "text": "조사에 전면 협조한다",
+        "check": { "stat": "ADMINISTRATION", "difficulty": 60 },
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": 15 }
+          ],
+          "nextEvents": []
+        },
+        "failure": {
+          "effects": [
+            { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": -15 },
+            { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": -10 }
+          ],
+          "nextEvents": []
+        }
+      },
+      {
+        "id": "SCAPEGOAT",
+        "text": "시설관리부장에게 책임을 돌린다",
+        "success": {
+          "effects": [
+            { "target": "COMPANY", "key": "IMPERIAL_TRUST", "operation": "ADD", "value": 5 },
+            { "target": "CHARACTER", "targetId": "MGR_001", "key": "PLAYER_RELATION", "operation": "ADD", "value": -40 },
+            { "target": "CHARACTER", "targetId": "MGR_001", "key": "DISCONTENT", "operation": "ADD", "value": 30 },
+            { "target": "FACTION", "targetId": "CONSERVATIVE", "key": "ATTITUDE", "operation": "ADD", "value": -15 }
+          ],
+          "nextEvents": []
+        }
+      }
+    ],
+    "nextEvents": []
+  },
+  {
+    "id": "EVT_OPPOSITION_GATHERING",
+    "name": "반대파 결집",
+    "type": "POLITICAL",
+    "description": "밤마다 기획조정본부 별실에 불이 켜진다. 책임자의 처사에 불만을 품은 자들이 모이고 있다.",
+    "conditions": [
+      { "target": "COMPANY", "key": "ORGANIZATION_DISCONTENT", "operator": "GTE", "value": 40 }
+    ],
+    "effects": [
+      { "target": "COMPANY", "key": "ORGANIZATION_CONTROL", "operation": "ADD", "value": -5 },
+      { "target": "FACTION", "targetId": "AMBITIOUS", "key": "INFLUENCE", "operation": "ADD", "value": 5 }
+    ],
+    "choices": [],
+    "nextEvents": []
+  }
+]
