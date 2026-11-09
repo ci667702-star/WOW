@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend-postgres",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "C:\\Users\\master\\Desktop\\project\\JavaProject\\gradlew.bat", "-p", "C:\\Users\\master\\Desktop\\project\\JavaProject", "bootRun", "--args=--spring.profiles.active=postgres"],
+      "port": 8080
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npm", "--prefix", "C:\\Users\\master\\Desktop\\project\\JavaProject\\frontend", "run", "dev"],
+      "port": 5173
+    }
+  ]
+}
