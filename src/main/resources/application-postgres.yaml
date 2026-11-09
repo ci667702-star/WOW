@@ -1,0 +1,12 @@
+# PostgreSQL 실행용: 루트의 compose.yaml로 DB를 띄운 뒤 사용한다.
+#   docker compose up -d
+#   ./gradlew bootRun --args='--spring.profiles.active=postgres'
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:warden}
+    username: ${DB_USERNAME:warden}
+    password: ${DB_PASSWORD:warden}
+  jpa:
+    hibernate:
+      # 스키마 마이그레이션 도구(Flyway 등)를 도입하기 전까지는 update로 관리한다.
+      ddl-auto: update

@@ -1,3 +1,22 @@
 spring:
   application:
     name: JavaProject
+  profiles:
+    # 별도 지정이 없으면 H2 인메모리 DB를 쓰는 local 프로필로 실행한다.
+    # PostgreSQL로 실행: --spring.profiles.active=postgres
+    default: local
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+app:
+  cors:
+    # 개발 환경 React(Vite) 서버 주소
+    allowed-origins:
+      - http://localhost:5173
+      - http://127.0.0.1:5173

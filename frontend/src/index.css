@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+/* 동양풍 다크 판타지 색 토큰 — bg-ink, text-gold 처럼 Tailwind 클래스로 사용 */
+@theme {
+  --color-ink: #0d0c0b;
+  --color-ink-soft: #1a1815;
+  --color-paper: #e8e0cc;
+  --color-paper-dim: #a39a86;
+  --color-gold: #c9a45c;
+  --color-cinnabar: #b23a2e;
+  --color-jade: #4f8a72;
+
+  --font-serif: 'Noto Serif KR', 'Batang', serif;
+}
+
+body {
+  @apply bg-ink text-paper font-serif antialiased;
+  margin: 0;
+  min-height: 100vh;
+}
