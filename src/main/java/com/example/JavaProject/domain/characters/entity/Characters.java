@@ -5,11 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Map;
 
 @Entity
 public class Characters {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,5 +32,7 @@ public class Characters {
     @Setter
     String description;
 
-
+    @Getter
+    @Setter
+    private Map<StatType, Integer> stats;
 }
