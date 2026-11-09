@@ -15,7 +15,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-/** 게임별 카드 상태와 사용 기록. 카드 내용(설명, 선택지, 효과)은 game-data/cards JSON에 있다. */
+/**
+ * 게임별 카드 상태와 사용 기록 (업무 카드, 특별지시 카드 공통).
+ * 카드 내용(설명, 등급, 선택지, 효과, 해금 조건)은 game-data/cards JSON에 있다.
+ */
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -44,9 +47,17 @@ public class Cards {
     @Column(length = 50)
     private String choiceCode;
 
-    public Cards(Games game, String cardCode) {
+    /** 특별지시 대상 ID — 인물·파벌·부서 등 (대상이 없으면 null) */
+    @Column(length = 50)
+    private String targetCode;
+
+    /** 판정 결과 (미처리면 null) */
+    private Boolean succeeded;
+
+    /** @param status 일반 카드는 IN_DECK, 해금 조건이 있는 PRESIDENT 카드는 LOCKED */
+    public Cards(Games game, String cardCode, CardStatus status) {
         this.game = game;
         this.cardCode = cardCode;
-        this.status = CardStatus.IN_DECK;
+        this.status = status;
     }
 }
