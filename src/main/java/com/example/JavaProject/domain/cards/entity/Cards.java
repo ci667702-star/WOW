@@ -15,9 +15,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-/**
- * 게임별 카드 상태와 사용 기록 (업무 카드, 특별지시 카드 공통).
- * 카드 내용(설명, 등급, 선택지, 효과, 해금 조건)은 game-data/cards JSON에 있다.
+/** 게임마다 달라지는 카드 상태와 사용 기록을 저장한다.
+ * 카드 설명, 등급, 선택지, 효과, 해금 조건은 game-data/cards JSON에서 관리한다.
  */
 @Entity
 @Getter
@@ -32,7 +31,7 @@ public class Cards {
     @JoinColumn(name = "game_id", nullable = false)
     private Games game;
 
-    /** JSON의 카드 ID (예: CARD_001) */
+    /** 기본 카드 JSON을 찾을 때 사용하는 ID (예: CARD_001) */
     @Column(nullable = false, length = 50)
     private String cardCode;
 
@@ -40,21 +39,28 @@ public class Cards {
     @Column(nullable = false, length = 20)
     private CardStatus status;
 
-    /** 처리한 턴 (미처리면 null) */
+    /** 이 카드가 처리된 턴. 미처리 상태면 null이다. */
     private Integer usedTurn;
 
-    /** 선택한 선택지 ID (미처리면 null) */
+    /** 플레이어가 선택한 선택지 ID. 미처리 상태면 null이다. */
     @Column(length = 50)
     private String choiceCode;
 
-    /** 특별지시 대상 ID — 인물·파벌·부서 등 (대상이 없으면 null) */
+    /** 특별지시의 대상 ID. 인물·파벌·부서 코드가 들어가며 대상이 없으면 null이다. */
     @Column(length = 50)
     private String targetCode;
 
-    /** 판정 결과 (미처리면 null) */
+    /** 선택 결과의 성공 여부. 아직 판정하지 않았으면 null이다. */
     private Boolean succeeded;
 
-    /** @param status 일반 카드는 IN_DECK, 해금 조건이 있는 PRESIDENT 카드는 LOCKED */
+    /**
+     * 카드 인스턴스를 만든다.
+     * 일반 카드는 IN_DECK, 해금 조건이 있는 PRESIDENT 카드는 LOCKED로 시작한다.
+     *
+     * @param game 카드가 속한 게임
+     * @param cardCode 기본 카드 데이터의 ID
+     * @param status 게임 안에서의 초기 카드 상태
+     */
     public Cards(Games game, String cardCode, CardStatus status) {
         this.game = game;
         this.cardCode = cardCode;

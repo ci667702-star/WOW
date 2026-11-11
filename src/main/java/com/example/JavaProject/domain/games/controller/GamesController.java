@@ -6,8 +6,8 @@ import com.example.JavaProject.domain.games.service.GamesService;
 import com.example.JavaProject.global.response.ResultDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +25,13 @@ public class GamesController {
         return ResultDto.success(gamesService.createGame(request));
     }
 
-    @PostMapping("/{gameId}/nextday")
-    public ResultDto<GameStateResponse> nextDay(@PathVariable Long gameId) {
-        return ResultDto.success(gamesService.nextDay(gameId));
+    @GetMapping("/current")
+    public ResultDto<GameStateResponse> getCurrentGame() {
+        return ResultDto.success(gamesService.getCurrentGame());
+    }
+
+    @PostMapping("/nextday")
+    public ResultDto<GameStateResponse> nextDay() {
+        return ResultDto.success(gamesService.nextDay());
     }
 }
